@@ -33,7 +33,7 @@ Workflow Summary
 2. Directory Structure
 
 A typical tree layout might look like:
-
+```
 aether-framework/
 ├─ README.md
 ├─ requirements.txt
@@ -84,7 +84,7 @@ aether-framework/
    │  │   └─ reinforcement_learning.py
    │  └─ ...
    └─ ...
-
+```
 Note: Exact filenames and subfolders may vary. This is just an illustrative example.
 
 3. Key Components
@@ -137,31 +137,32 @@ Additional Examples
 
 5. Installation & Setup
 	1.	Clone this repo:
-
-git clone https://github.com/YourOrganization/aether-framework-news.git
-cd aether-framework-news
-
+```
+git clone https://github.com/drxing96/aether-x.git
+cd aether-x
+```
 
 	2.	Create and activate a virtual environment:
-
+```
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
 # or
 venv\Scripts\activate      # Windows
-
+```
 
 	3.	Install dependencies:
-
+```
 pip install -r requirements.txt
-
+```
 
 	4.	Set environment variables (e.g., in a .env file for local testing):
-
+ ```
 OPENAI_API_KEY="sk-..."
 TWITTER_CONSUMER_KEY="..."
 TWITTER_CONSUMER_SECRET="..."
 TWITTER_ACCESS_TOKEN="..."
 TWITTER_ACCESS_TOKEN_SECRET="..."
+```
 
 6. Running the Workflow
 
