@@ -1,4 +1,4 @@
-# Aether X – Multi-Agent X AI built on Aether Framework
+# Aether X – Multi-Agent AI built for X on Aether Framework (A.I twitter Agents)
 
 **Aether Framework** is a modular multi-agent architecture designed to enable advanced synergy among distributed autonomous nodes, AI agents, and swarm-based decision modules. This repository demonstrates how to integrate aether-framework components with an existing pipeline for news fetching, OpenAI-based summarization, and Twitter posting.
 
