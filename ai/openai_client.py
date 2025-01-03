@@ -12,23 +12,27 @@ def generate_tweet_draft(news_summary: str) -> str:
         logger.warning("OPENAI_API_KEY is not set. Returning an empty tweet draft.")
         return ""
 
-    # Use your real news_summary directly in the prompt
-    prompt = (
-        "Craft a concise tweet (280 characters max) based on the following news summary. "
-        "Keep it factual and engaging. Use relevant crypto hashtags if needed:\n\n"
-        f"{news_summary}"
-    )
-
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=prompt,
-            max_tokens=60,      # Enough for a short tweet
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "user",
+                    "content": (
+                        "Craft a concise tweet (280 characters max) based on the following news summary. "
+                        "Keep it factual and engaging. Use relevant crypto hashtags if needed:\n\n"
+                        + news_summary
+                    )
+                }
+            ],
+            max_tokens=60,
             temperature=0.7
         )
-        tweet_text = response["choices"][0]["text"].strip()
+        # Use dot notation here:
+        tweet_text = response.choices[0].message.content.strip()
         logger.info("Generated tweet draft via OpenAI.")
         return tweet_text
+
     except Exception as e:
         logger.error(f"Error generating tweet with OpenAI: {e}")
         return "Could not generate tweet."

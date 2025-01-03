@@ -1,5 +1,5 @@
 requests
 openai
-tweepy
 python-dotenv
 schedule
+twython

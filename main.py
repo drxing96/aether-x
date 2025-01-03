@@ -1,7 +1,7 @@
 import time
 from news.news_client import fetch_latest_crypto_news
-# from openai.openai_client import generate_tweet_draft
-# from twitter.twitter_client import post_tweet
+from ai.openai_client import generate_tweet_draft
+from twitter.twitter_client import post_tweet
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -31,14 +31,14 @@ def main():
     news_summary = summarize_articles(articles)
     logger.debug(f"News Summary:\n{news_summary}")
 
-    # # 3. Generate a tweet draft using OpenAI
-    # tweet_text = generate_tweet_draft(news_summary)
-    # logger.debug(f"Draft tweet: {tweet_text}")
+    # 3. Generate a tweet draft using OpenAI
+    tweet_text = generate_tweet_draft(news_summary)
+    logger.debug(f"Draft tweet: {tweet_text}")
 
     # # 4. Post the tweet to Twitter
-    # post_tweet(tweet_text)
+    post_tweet(tweet_text)
 
-    # logger.info("Completed daily news tweet workflow.")
+    logger.info("Completed daily news tweet workflow.")
 
 if __name__ == "__main__":
     main()
