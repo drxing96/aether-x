@@ -8,24 +8,22 @@ logger = get_logger(__name__)
 openai.api_key = OPENAI_API_KEY
 
 def generate_tweet_draft(news_summary: str) -> str:
-    """
-    Takes a text summary of news and generates a tweet-friendly message.
-    """
-
     if not OPENAI_API_KEY:
         logger.warning("OPENAI_API_KEY is not set. Returning an empty tweet draft.")
         return ""
 
+    # Use your real news_summary directly in the prompt
     prompt = (
-        "Based on the following news summary, craft a concise tweet (280 characters max). "
-        "Make it engaging and factual:\n\n" + news_summary
+        "Craft a concise tweet (280 characters max) based on the following news summary. "
+        "Keep it factual and engaging. Use relevant crypto hashtags if needed:\n\n"
+        f"{news_summary}"
     )
 
     try:
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=prompt,
-            max_tokens=60,  # Enough for a concise tweet
+            max_tokens=60,      # Enough for a short tweet
             temperature=0.7
         )
         tweet_text = response["choices"][0]["text"].strip()
